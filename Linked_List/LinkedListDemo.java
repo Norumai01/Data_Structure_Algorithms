@@ -20,7 +20,9 @@ public class LinkedListDemo {
         /*
         Linked List: Collection of nodes where each node contains data and reference to another node with a next in a sequence. The tail or end of the list is null.
         Pros: Also Dynamic. Easy to insert/delete nodes without performance hindrance.
-        Cons: Harder to search than an ArrayList. Needs to iterate through.
+        Cons: Harder to search than an ArrayList. Needs to iterate through. Non-cache friendly.
+		Good for: stacks, memory is tight.
+		Bad for: frequent searches, reverse iteration, cache performance
         Reference: https://www.geeksforgeeks.org/time-and-space-complexity-of-linked-list/
         */
 

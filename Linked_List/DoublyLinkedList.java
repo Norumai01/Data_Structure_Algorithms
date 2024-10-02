@@ -82,7 +82,7 @@ public class DoublyLinkedList<T> {
     }
 
     public void add(T data, int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
 
@@ -94,7 +94,7 @@ public class DoublyLinkedList<T> {
         }
         else {
             Node current = head;
-            for (int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index; i++) {
                 current = current.next;
             }
 
@@ -108,7 +108,51 @@ public class DoublyLinkedList<T> {
     }
 
     public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
 
+        if (index == 0) {
+            // At index 0, remove first element.
+            head = head.next;
+            if (head != null) {
+                head.prev = null; // List >= 2
+            }
+            else {
+                tail = null; // List == 1
+            }
+        }
+        else if (index == size - 1) {
+            // At last index, remove last element.
+            // TODO: May need to account for list with size 1.
+            tail = tail.prev;
+            tail.next = null;
+        }
+        else {
+            Node current = head;
+            for (int i = 0; i < index; i++) {
+                current = current.next;
+            }
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+        size--;
+    }
+
+    public void removeFront() {
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("List is empty.");
+        }
+
+        if (size == 1) {
+            head = null;
+            tail = null;
+        }
+        else {
+            head = head.next;
+            head.prev = null;
+        }
+        size--;
     }
 
     @Override
@@ -160,6 +204,16 @@ public class DoublyLinkedList<T> {
 
         // Adding element at particular index.
         list.add("Pear", 4);
+        System.out.println(list);
+        System.out.println();
+
+        // Remove element at particular index.
+        list.remove(4);
+        System.out.println(list);
+        System.out.println();
+
+        // Remove front element.
+        list.removeFront();
         System.out.println(list);
         System.out.println();
     }

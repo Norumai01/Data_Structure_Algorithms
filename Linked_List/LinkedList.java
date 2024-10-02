@@ -75,6 +75,7 @@ public class LinkedList<T> {
         if (index == 0) {
             head = head.next;
         }
+        // TODO: May need to account for list with size 1.
         else {
             Node<T> current = head;
             for (int i = 0; i < index - 1; i++) {
@@ -83,6 +84,13 @@ public class LinkedList<T> {
             current.next = current.next.next;
         }
         size--;
+    }
+
+    public void removeElementPos(int nthPos) {
+        if (nthPos < 1 || nthPos > size) {
+            throw new IndexOutOfBoundsException("N: " + nthPos + ", Size: " + size);
+        }
+        remove(nthPos - 1);
     }
 
     public void removeLast() {
@@ -175,6 +183,11 @@ public class LinkedList<T> {
 
         // Add element in particular position
         list.add(10, 3);
+        System.out.println(list);
+        System.out.println();
+
+        // Remove element based on position. Remove 4th element.
+        list.removeElementPos(4);
         System.out.println(list);
         System.out.println();
     }

@@ -42,6 +42,9 @@ public class DeleteNodeLeetCode {
 
 
     public static void main(String[] args) {
+
+        // URL: https://leetcode.com/problems/delete-node-in-a-linked-list/
+
         ListNode head = createLinkedList(new int[]{4, 5, 1, 9});
 
         System.out.println(linkedListToString(head));

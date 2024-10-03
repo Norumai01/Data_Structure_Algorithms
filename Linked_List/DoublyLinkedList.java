@@ -208,9 +208,9 @@ public class DoublyLinkedList<T> {
 
         // Check if element exists.
         int indexPosition = list.indexOf("Potato");
-        System.out.println("Does Potato exist? " + ((indexPosition != -1) ? "Yes" : "No"));
+        System.out.println("Does Potato exist? " + ((indexPosition != -1) ? String.format("Yes, at index %d", indexPosition) : "No"));
         indexPosition = list.indexOf("Grape");
-        System.out.println("Does Apple exist? " + ((indexPosition != -1) ? "Yes" : "No"));
+        System.out.println("Does Grape exist? " + ((indexPosition != -1) ? String.format("Yes, at index %d", indexPosition) : "No"));
         System.out.println("3rd Index: " + list.get(3));
         System.out.println();
 

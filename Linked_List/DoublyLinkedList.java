@@ -108,9 +108,13 @@ public class DoublyLinkedList<T> {
     }
 
     public void remove(int index) {
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("List is empty.");
+        }
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
+
 
         if (index == 0) {
             // At index 0, remove first element.
@@ -145,12 +149,26 @@ public class DoublyLinkedList<T> {
         }
 
         if (size == 1) {
-            head = null;
-            tail = null;
+            head = tail = null;
         }
         else {
             head = head.next;
             head.prev = null;
+        }
+        size--;
+    }
+
+    public void removeLast() {
+        if (size == 0) {
+            throw new IndexOutOfBoundsException("List is empty.");
+        }
+
+        if (size == 1) {
+            head = tail = null;
+        }
+        else {
+            tail = tail.prev;
+            tail.next = null;
         }
         size--;
     }
@@ -214,6 +232,11 @@ public class DoublyLinkedList<T> {
 
         // Remove front element.
         list.removeFront();
+        System.out.println(list);
+        System.out.println();
+
+        // Remove last element.
+        list.removeLast();
         System.out.println(list);
         System.out.println();
     }
